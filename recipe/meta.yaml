@@ -1,6 +1,6 @@
 {% set name = "gwdatafind" %}
-{% set version = "1.0.2" %}
-{% set sha256 = "1c26a2abf912c25c214c08da304328042ca2945e8acc92923b8eba03b838bc2b" %}
+{% set version = "1.0.3" %}
+{% set sha256 = "e4ff082e0fce96c07f3b8cded5d94772f299e83ebad426b5b3e3b8c3b1c9a606" %}
 
 package:
   name: {{ name }}
