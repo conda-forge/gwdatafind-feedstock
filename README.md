@@ -1,7 +1,9 @@
+<!--
+# -*- mode: jinja -*-
+-->
+
 About gwdatafind
 ================
-
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 Home: https://gwdatafind.readthedocs.io
 
@@ -19,9 +21,8 @@ gravitational-wave detectors.
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/gwdatafind-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/gwdatafind-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/gwdatafind-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/gwdatafind-feedstock)
-![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
+All platforms:
+[![noarch](https://img.shields.io/circleci/project/github/conda-forge/gwdatafind-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/gwdatafind-feedstock)
 
 Current release info
 ====================
@@ -54,6 +55,8 @@ conda search gwdatafind --channel conda-forge
 
 About conda-forge
 =================
+
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
