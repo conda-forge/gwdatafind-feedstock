@@ -26,6 +26,9 @@ requirements:
     - six
     - pyopenssl
     - ligo-segments
+  run_constrained:
+    # pin to lscsoft-glue-2.0.0 to prevent file clobbering
+    - lscsoft-glue >=2.0.0
 
 test:
   requires:
