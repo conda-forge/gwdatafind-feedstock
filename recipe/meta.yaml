@@ -1,6 +1,6 @@
 {% set name = "gwdatafind" %}
-{% set version = "1.0.3" %}
-{% set sha256 = "e4ff082e0fce96c07f3b8cded5d94772f299e83ebad426b5b3e3b8c3b1c9a606" %}
+{% set version = "1.0.4" %}
+{% set sha256 = "3b7b586a2fbe87dc3867c38699c50ad8028f8403a6689b21ac6229e0ac127492" %}
 
 package:
   name: {{ name }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
+  number: 0
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
@@ -26,6 +26,9 @@ requirements:
     - six
     - pyopenssl
     - ligo-segments
+  run_constrained:
+    # pin to lscsoft-glue-2.0.0 to prevent file clobbering
+    - lscsoft-glue >=2.0.0
 
 test:
   requires:
