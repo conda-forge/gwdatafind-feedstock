@@ -1,20 +1,20 @@
 {% set name = "gwdatafind" %}
 {% set version = "1.0.4" %}
-{% set sha256 = "3b7b586a2fbe87dc3867c38699c50ad8028f8403a6689b21ac6229e0ac127492" %}
 
 package:
-  name: {{ name }}
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 3b7b586a2fbe87dc3867c38699c50ad8028f8403a6689b21ac6229e0ac127492
 
 build:
-  number: 0
+  entry_points:
+    - gw_data_find = gwdatafind.__main__:main
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -33,7 +33,6 @@ requirements:
 test:
   requires:
     - pytest
-    - mock  # [py2k]
   imports:
     - gwdatafind.http
     - gwdatafind.ui
@@ -41,12 +40,13 @@ test:
   commands:
     - python -m pytest --pyargs gwdatafind
     - python -m gwdatafind --help
+    - gw_data_find --help
 
 about:
   home: https://gwdatafind.readthedocs.io
   doc_url: https://gwdatafind.readthedocs.io
-  dev_url: https://git.ligo.org/lscsoft/{{ name }}
-  license: GPLv3
+  dev_url: https://git.ligo.org/gwdatafind/gwdatafind
+  license: GPL-3.0-or-later
   license_file: LICENSE
   license_family: GPL
   summary: The client library for the LIGO Data Replicator (LDR) service.
