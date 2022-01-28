@@ -1,5 +1,5 @@
 {% set name = "gwdatafind" %}
-{% set version = "1.0.4" %}
+{% set version = "1.0.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,38 +7,41 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3b7b586a2fbe87dc3867c38699c50ad8028f8403a6689b21ac6229e0ac127492
+  sha256: 4675b5b88443c7f2c228f99ac13fce0565ab6b2d40900663961ecf4fb5727c8f
+  patches:
+    # remove unused requirements
+    - requirements.patch
 
 build:
   entry_points:
     - gw_data_find = gwdatafind.__main__:main
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python
-    - setuptools
     - pip
+    - python >=3.6
+    - setuptools
   run:
-    - python
-    - six
-    - pyopenssl
     - ligo-segments
+    - pyopenssl
+    - python >=3.6
   run_constrained:
     # pin to lscsoft-glue-2.0.0 to prevent file clobbering
     - lscsoft-glue >=2.0.0
 
 test:
   requires:
+    - pip
     - pytest
-  imports:
-    - gwdatafind.http
-    - gwdatafind.ui
-    - gwdatafind.utils
   commands:
+    # check metadata
+    - python -m pip check
+    # run test suite
     - python -m pytest --pyargs gwdatafind
+    # check entry points
     - python -m gwdatafind --help
     - gw_data_find --help
 
