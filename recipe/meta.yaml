@@ -1,5 +1,5 @@
 {% set name = "gwdatafind" %}
-{% set version = "1.0.5" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4675b5b88443c7f2c228f99ac13fce0565ab6b2d40900663961ecf4fb5727c8f
+  sha256: eb97eebc5d89c5be4d9db53496f9ad0e2fd0496d99ea2cd4fc3e543674b48da3
   patches:
     # remove unused requirements
     - requirements.patch
