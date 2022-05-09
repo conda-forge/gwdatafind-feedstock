@@ -1,5 +1,5 @@
 {% set name = "gwdatafind" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: eb97eebc5d89c5be4d9db53496f9ad0e2fd0496d99ea2cd4fc3e543674b48da3
+  sha256: 5d23ff803731e263ab07dfd8e382bf1cd5fa1d055298398511ccc87c3e09a52c
 
 build:
   entry_points:
@@ -20,13 +20,13 @@ requirements:
   host:
     - pip
     - python >=3.6
-    - setuptools
+    - setuptools >=42
   run:
     - igwn-auth-utils >=0.2.0
     - ligo-segments
     - python >=3.6
-    - requests
-    - safe-netrc
+    - requests >=2.14
+    - safe-netrc >=1.0.0
   run_constrained:
     # pin to lscsoft-glue-2.0.0 to prevent file clobbering
     - lscsoft-glue >=2.0.0
