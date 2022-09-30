@@ -1,5 +1,5 @@
 {% set name = "gwdatafind" %}
-{% set version = "1.1.1" %}
+{% set version = "1.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5d23ff803731e263ab07dfd8e382bf1cd5fa1d055298398511ccc87c3e09a52c
+  sha256: 178392bdd5a45ddcc7773bb3ec8aa8f31c34af2f4672740c0dd1449fa1d75a7b
 
 build:
   entry_points:
