@@ -22,11 +22,9 @@ requirements:
     - python >=3.6
     - setuptools >=42
   run:
-    - igwn-auth-utils >=0.2.0
+    - igwn-auth-utils >=0.3.1
     - ligo-segments
     - python >=3.6
-    - requests >=2.14
-    - safe-netrc >=1.0.0
   run_constrained:
     # pin to lscsoft-glue-2.0.0 to prevent file clobbering
     - lscsoft-glue >=2.0.0
@@ -38,7 +36,8 @@ test:
     - requests-mock
   commands:
     # check metadata
-    - python -m pip check
+    - python -m pip check gwdatafind
+    - python -m pip show gwdatafind
     # run test suite
     - python -m pytest --pyargs gwdatafind
     # check entry points
