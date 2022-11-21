@@ -1,0 +1,13 @@
+diff --git a/gwdatafind/__main__.py b/gwdatafind/__main__.py
+index 90b55d3..3f46a8d 100644
+--- a/gwdatafind/__main__.py
++++ b/gwdatafind/__main__.py
+@@ -139,7 +139,7 @@ def command_line():
+
+     sargs = parser.add_argument_group(
+         'Connection options', 'Authentication and connection options.')
+-    sargs.add_argument('-r', '--server', metavar='HOST:PORT', default=defhost,
++    sargs.add_argument('-r', '--server', metavar='HOST', default=defhost,
+                        required=not defhost,
+                        help='hostname and optional port of server to query '
+                             '(default: %(default)s)')
