@@ -6,14 +6,14 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 8f74942e66cdb9a53030da29069110b3cb30afc2a034790957786028fb09f451
 
 build:
   entry_points:
     - gw_data_find = gwdatafind.__main__:main
   noarch: python
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} -m pip install . -vv
     - mkdir -p ${PREFIX}/man/man1
@@ -29,7 +29,7 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools >=42
     # for the man pages
     - argparse-manpage
@@ -38,7 +38,7 @@ requirements:
   run:
     - igwn-auth-utils >=0.3.1
     - ligo-segments
-    - python >=3.6
+    - python >={{ python_min }}
   run_constrained:
     # pin to lscsoft-glue-2.0.0 to prevent file clobbering
     - lscsoft-glue >=2.0.0
@@ -48,6 +48,7 @@ test:
     - pip
     - pytest
     - requests-mock
+    - python {{ python_min }}
   commands:
     # check metadata
     - python -m pip check gwdatafind
