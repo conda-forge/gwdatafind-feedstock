@@ -1,5 +1,5 @@
 {% set name = "gwdatafind" %}
-{% set version = "1.2.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,37 +7,34 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8f74942e66cdb9a53030da29069110b3cb30afc2a034790957786028fb09f451
+  sha256: 04fb1aa18ea1f22148a17eb1ac30406b8737f89a6d86113f3c06b86c30ba7127
 
 build:
   entry_points:
     - gw_data_find = gwdatafind.__main__:main
   noarch: python
-  number: 1
+  number: 0
   script:
     - {{ PYTHON }} -m pip install . -vv
-    - mkdir -p ${PREFIX}/man/man1
-    - argparse-manpage
-          --description "discover available GW data"
-          --function command_line
-          --module gwdatafind.__main__
-          --output ${PREFIX}/man/man1/gw_data_find.1
-          --prog gw_data_find
-          --project-name {{ name }}
-          --version {{ version }}
+    - {{ PYTHON }} -c "from setuptools import setup; setup()" --command-packages=build_manpages build_manpages  # [unix]
+    - mkdir -p ${PREFIX}/man/man1  # [unix]
+    - install -m 644 -p -v man/*.1* ${PREFIX}/man/man1  # [unix]
 
 requirements:
   host:
     - pip
     - python {{ python_min }}
-    - setuptools >=42
+    - setuptools >=70.0.0
+    - wheel
     # for the man pages
-    - argparse-manpage
+    - argparse-manpage  # [unix]
     - igwn-auth-utils >=0.3.1
-    - ligo-segments
+    - igwn-segments
   run:
+    - __unix  # [unix]
+    - __win  # [win]
     - igwn-auth-utils >=0.3.1
-    - ligo-segments
+    - igwn-segments
     - python >={{ python_min }}
   run_constrained:
     # pin to lscsoft-glue-2.0.0 to prevent file clobbering
@@ -59,8 +56,8 @@ test:
     - python -m gwdatafind --help
     - gw_data_find --help
     # check man pages
-    - man -w gw_data_find
-    - man -Pcat gw_data_find
+    - man -w gw_data_find  # [unix]
+    - man -Pcat gw_data_find  # [unix]
 
 about:
   home: https://gwdatafind.readthedocs.io
