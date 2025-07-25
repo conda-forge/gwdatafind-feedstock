@@ -1,5 +1,5 @@
 {% set name = "gwdatafind" %}
-{% set version = "2.0.0" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 04fb1aa18ea1f22148a17eb1ac30406b8737f89a6d86113f3c06b86c30ba7127
+  sha256: 4c87660f400385039221557e92d16334160642f24314a3bf05b7c37b9aecb565
 
 build:
   entry_points:
@@ -24,7 +24,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
-    - setuptools >=70.0.0
+    - setuptools >=78.1.1
     - wheel
     # for the man pages
     - argparse-manpage  # [unix]
